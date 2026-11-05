@@ -4,6 +4,7 @@ import Eyebrow from "@/components/atoms/Eyebrow.astro";
 import FilterBar from "@/components/molecules/FilterBar";
 import ArticleGrid from "@/components/organisms/ArticleGrid.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { href } from "@/lib/site";
 
 const articles = (await getCollection("articles"))
 	.filter((a) => a.data.preview_visible)
@@ -24,7 +25,7 @@ const categories = [...new Set(items.map((i) => i.category))];
       <h1 class="mt-7 text-[44px] font-medium leading-[49px] tracking-tight lg:mt-[24px] lg:text-[64px] lg:leading-[64px]">Dernières publications</h1>
     </section>
     <div class="border-b border-border">
-      <FilterBar client:load categories={categories} total={items.length} />
+      <FilterBar client:load categories={categories} total={items.length} rssHref={href('rss.xml')} />
     </div>
     <ArticleGrid items={items} />
   </main>
