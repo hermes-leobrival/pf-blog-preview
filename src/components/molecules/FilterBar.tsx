@@ -1,12 +1,12 @@
-import { Search } from 'lucide-react';
+import { Rss, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { CategoryTag } from '@/components/atoms/CategoryTag';
 import { Input } from '@/components/ui/input';
 
-type Props = { categories: string[]; total: number };
+type Props = { categories: string[]; total: number; rssHref: string };
 
 /** Molécule (îlot React) : filtre par catégorie et recherche. Agit sur les `.js-post` de la page. */
-export default function FilterBar({ categories, total }: Props) {
+export default function FilterBar({ categories, total, rssHref }: Props) {
   const [active, setActive] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const q = query.trim().toLowerCase();
@@ -23,12 +23,12 @@ export default function FilterBar({ categories, total }: Props) {
   }, [active, q]);
 
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-4 px-4 py-4 lg:px-[38px] lg:py-[29px]">
-      <span className="font-medium">Filtrer par catégorie</span>
-      <span id="result-count" className="text-text-tertiary">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-4 px-4 pb-4 pt-6 lg:px-10 lg:pb-4 lg:pt-10">
+      <span className="text-sm font-medium">Filtrer par catégorie</span>
+      <span id="result-count" className="text-sm text-text-tertiary">
         {total} {total > 1 ? 'résultats' : 'résultat'}
       </span>
-      <fieldset className="m-0 flex min-w-0 basis-full flex-wrap gap-2 border-0 p-0 lg:basis-auto">
+      <fieldset className="m-0 flex min-w-0 basis-full flex-wrap gap-2 border-0 p-0 lg:ml-2 lg:basis-auto">
         <legend className="sr-only">Catégories</legend>
         {categories.map((c) => (
           <button
@@ -45,7 +45,7 @@ export default function FilterBar({ categories, total }: Props) {
       </fieldset>
       <label
         htmlFor="post-search"
-        className="relative order-first w-full lg:order-none lg:ml-auto lg:w-[288px]"
+        className="relative order-first w-full lg:order-none lg:ml-auto lg:w-[306px]"
       >
         <span className="sr-only">Rechercher</span>
         <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-text-tertiary" />
@@ -53,9 +53,16 @@ export default function FilterBar({ categories, total }: Props) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Rechercher…"
-          className="h-12 rounded-lg bg-transparent pl-12 text-base"
+          className="h-[50px] rounded-lg bg-transparent pl-12 text-base"
         />
       </label>
+      <a
+        href={rssHref}
+        aria-label="Flux RSS"
+        className="order-first flex size-[50px] items-center justify-center rounded-lg border border-border text-text-tertiary hover:bg-surface-header focus-visible:outline-2 focus-visible:outline-offset-2 lg:order-none"
+      >
+        <Rss className="size-4" />
+      </a>
     </div>
   );
 }
