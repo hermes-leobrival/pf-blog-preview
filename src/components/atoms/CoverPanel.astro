@@ -1,0 +1,16 @@
+---
+// Atome : visuel de couverture généré en CSS (pas d'image sur les brouillons).
+interface Props {
+	index: number;
+	label: string;
+	class?: string;
+}
+const { index, label, class: cls = "" } = Astro.props;
+const tones = ["#1f3dff", "#ff6a1a", "#0d7a5f", "#7a3df0"];
+const tone = tones[index % tones.length];
+---
+<div class:list={['relative overflow-hidden', cls]} style={`background:${tone}`} aria-hidden="true">
+  <div class="absolute inset-0 opacity-30" style="background:radial-gradient(circle at 70% 30%,#fff 0,transparent 55%)"></div>
+  <span class="absolute bottom-4 left-5 font-mono text-[11px] uppercase text-white/90">{label}</span>
+  <span class="absolute right-5 top-2 text-[96px] font-medium leading-none text-white/90">{String(index + 1).padStart(2, '0')}</span>
+</div>

@@ -1,0 +1,11 @@
+---
+import { STATUS_LABEL } from "@/lib/site";
+
+interface Props {
+	status: keyof typeof STATUS_LABEL;
+}
+const { status } = Astro.props;
+---
+<span class="inline-flex items-center rounded-[4px] border border-[#e0c36a] bg-[#fff3cd] px-2 py-0.5 font-mono text-[11px] uppercase leading-4" data-status={status}>
+  {STATUS_LABEL[status]}{status !== 'published' && ' · relecture'}
+</span>

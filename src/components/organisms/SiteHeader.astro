@@ -1,0 +1,12 @@
+---
+import { href, SITE_NAME } from "@/lib/site";
+---
+<header class="sticky top-0 z-50 flex h-[49px] items-stretch justify-between border-b border-border bg-surface-header">
+  <nav class="flex items-stretch divide-x divide-border" aria-label="Navigation principale">
+    <a href={href()} class="grid min-w-12 place-content-center px-4 font-medium lg:min-w-30" aria-label={`${SITE_NAME}, accueil`}>{SITE_NAME}</a>
+    <a href={href()} class="hidden items-center px-4 hover:bg-ghost sm:flex" aria-current="page">Articles</a>
+  </nav>
+  <div class="flex items-stretch divide-x divide-border border-l border-border">
+    <span class="flex items-center px-4 font-mono text-[11px] uppercase">Aperçu · brouillons</span>
+  </div>
+</header>

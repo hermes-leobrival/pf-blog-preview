@@ -1,0 +1,21 @@
+---
+import type { Source } from "@/lib/site";
+
+interface Props {
+	links: Source[];
+}
+const { links } = Astro.props;
+---
+{links.length > 0 && (
+  <section class="mt-16 border-t border-border pt-8" aria-labelledby="further">
+    <h2 id="further" class="font-mono text-[11px] uppercase">Pour aller plus loin</h2>
+    <ul class="mt-4 space-y-3">
+      {links.map((s) => (
+        <li>
+          <a class="underline underline-offset-4 hover:no-underline" href={s.urls[0]} rel="noopener noreferrer">{s.title}</a>
+          <span class="text-text-tertiary"> · {s.author}{s.kind === 'étude' ? ' · étude' : ''}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

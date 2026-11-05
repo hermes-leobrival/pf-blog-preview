@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Eyebrow from "@/components/atoms/Eyebrow.astro";
+import FilterBar from "@/components/molecules/FilterBar";
+import ArticleGrid from "@/components/organisms/ArticleGrid.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const articles = (await getCollection("articles"))
+	.filter((a) => a.data.preview_visible)
+	.sort((a, b) => (a.filePath ?? a.id).localeCompare(b.filePath ?? b.id));
+const items = articles.map((a) => ({
+	slug: a.data.slug,
+	title: a.data.title,
+	summary: a.data.summary,
+	category: a.data.category,
+	status: a.data.status,
+}));
+const categories = [...new Set(items.map((i) => i.category))];
+---
+<BaseLayout title="Blog | Plugin Factory" description="Brouillons en relecture du blog Plugin Factory.">
+  <main>
+    <section class="border-b border-border h-[248px] px-4 pt-[80px] lg:h-[272px] lg:px-[38px]">
+      <Eyebrow>Blog</Eyebrow>
+      <h1 class="mt-7 text-[44px] font-medium leading-[49px] tracking-tight lg:mt-[24px] lg:text-[64px] lg:leading-[64px]">Dernières publications</h1>
+    </section>
+    <div class="border-b border-border">
+      <FilterBar client:load categories={categories} total={items.length} />
+    </div>
+    <ArticleGrid items={items} />
+  </main>
+</BaseLayout>

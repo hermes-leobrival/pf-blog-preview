@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from "astro:content";
+import FurtherReading from "@/components/organisms/FurtherReading.astro";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+import { publicLinks } from "@/lib/site";
+
+export async function getStaticPaths() {
+	const all = await getCollection("articles");
+	return all
+		.filter((a) => a.data.preview_visible)
+		.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+<ArticleLayout title={d.meta_title} heading={d.title} description={d.meta_description} summary={d.summary} category={d.category} status={d.status} publishedAt={d.published_at} scheduledAt={d.scheduled_publish_at} updatedAt={d.updated_at}>
+  <Content />
+  <FurtherReading slot="after" links={publicLinks(d.sources)} />
+</ArticleLayout>

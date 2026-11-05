@@ -1,0 +1,40 @@
+---
+import { CategoryTag } from "@/components/atoms/CategoryTag";
+import CoverPanel from "@/components/atoms/CoverPanel.astro";
+import StatusBadge from "@/components/atoms/StatusBadge.astro";
+import { href } from "@/lib/site";
+
+interface Props {
+	slug: string;
+	title: string;
+	summary: string;
+	category: string;
+	status: "draft" | "scheduled" | "published";
+	index: number;
+	featured?: boolean;
+}
+const {
+	slug,
+	title,
+	summary,
+	category,
+	status,
+	index,
+	featured = false,
+} = Astro.props;
+---
+<article class="js-post group/post bg-card p-5 lg:p-10" data-category={category} data-title={`${title} ${summary}`.toLowerCase()}>
+  <div class:list={['flex border border-border bg-surface-header', featured ? 'flex-col lg:flex-row' : 'flex-col']}>
+    <div class:list={['order-2 flex flex-1 flex-col p-6', featured && 'lg:w-1/2']}>
+      <div class="flex items-center gap-2">
+        <CategoryTag>{category}</CategoryTag>
+        {status !== 'published' && <StatusBadge status={status} />}
+      </div>
+      <h2 class:list={['mt-6 font-medium text-current', featured ? 'text-2xl leading-8 lg:text-[32px] lg:leading-10' : 'text-2xl leading-8']}>
+        <a href={href(`articles/${slug}`)} class="after:absolute after:inset-0 hover:underline">{title}</a>
+      </h2>
+      <p class:list={['mt-4', featured ? 'lg:text-xl lg:leading-[26px]' : 'text-text-tertiary']}>{summary}</p>
+    </div>
+    <CoverPanel index={index} label={category} class:list={[featured ? 'order-1 h-[226px] lg:order-2 lg:h-auto lg:min-h-[480px] lg:w-1/2' : 'order-1 h-[226px]']} />
+  </div>
+</article>

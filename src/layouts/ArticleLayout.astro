@@ -1,0 +1,47 @@
+---
+import { CategoryTag } from "@/components/atoms/CategoryTag";
+import StatusBadge from "@/components/atoms/StatusBadge.astro";
+import { fmtDate, href } from "@/lib/site";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+	title: string;
+	heading: string;
+	description: string;
+	summary: string;
+	category: string;
+	status: "draft" | "scheduled" | "published";
+	publishedAt: Date | null;
+	scheduledAt: Date | null;
+	updatedAt: Date;
+}
+const {
+	title,
+	heading,
+	description,
+	summary,
+	category,
+	status,
+	publishedAt,
+	scheduledAt,
+	updatedAt,
+} = Astro.props;
+---
+<BaseLayout title={title} description={description} noindex={status !== 'published'}>
+  <main>
+    <header class="border-b border-border px-5 pb-12 pt-12 lg:px-10 lg:pt-20">
+      <a href={href()} class="font-mono text-[11px] uppercase hover:underline">← Articles</a>
+      <div class="mt-8 flex items-center gap-2"><CategoryTag>{category}</CategoryTag><StatusBadge status={status} /></div>
+      <h1 class="mt-6 max-w-4xl text-[32px] font-medium leading-10 lg:text-[56px] lg:leading-[60px]">{heading}</h1>
+      <p class="mt-6 max-w-3xl text-xl leading-7 text-text-tertiary">{summary}</p>
+      <dl class="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-mono text-[11px] uppercase text-text-tertiary">
+        <div><dt class="inline">Publication : </dt><dd class="inline">{status === 'scheduled' && scheduledAt ? `prévue le ${fmtDate(scheduledAt)}` : fmtDate(publishedAt)}</dd></div>
+        <div><dt class="inline">Mis à jour : </dt><dd class="inline">{fmtDate(updatedAt)}</dd></div>
+      </dl>
+    </header>
+    <div class="mx-auto max-w-[44rem] px-5 py-12 lg:py-16">
+      <article class="prose-article"><slot /></article>
+      <slot name="after" />
+    </div>
+  </main>
+</BaseLayout>
