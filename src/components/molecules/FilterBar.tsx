@@ -43,26 +43,25 @@ export default function FilterBar({ categories, total, rssHref }: Props) {
           </button>
         ))}
       </fieldset>
-      <label
-        htmlFor="post-search"
-        className="relative order-first w-full lg:order-none lg:ml-auto lg:w-[306px]"
-      >
-        <span className="sr-only">Rechercher</span>
-        <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-text-tertiary" />
-        <Input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Rechercher…"
-          className="h-[50px] rounded-lg bg-transparent pl-12 text-base"
-        />
-      </label>
-      <a
-        href={rssHref}
-        aria-label="Flux RSS"
-        className="order-first flex size-[50px] items-center justify-center rounded-lg border border-border text-text-tertiary hover:bg-surface-header focus-visible:outline-2 focus-visible:outline-offset-2 lg:order-none"
-      >
-        <Rss className="size-4" />
-      </a>
+      <div className="order-first flex w-full items-center gap-4 lg:order-none lg:ml-auto lg:w-auto">
+        <label htmlFor="post-search" className="relative min-w-0 flex-1 lg:w-[306px] lg:flex-none">
+          <span className="sr-only">Rechercher</span>
+          <Search className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-text-tertiary" />
+          <Input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Rechercher…"
+            className="h-[50px] rounded-lg bg-transparent pl-12 text-base"
+          />
+        </label>
+        <a
+          href={rssHref}
+          aria-label="Flux RSS"
+          className="flex size-[50px] shrink-0 items-center justify-center rounded-lg border border-border text-text-tertiary hover:bg-surface-header focus-visible:outline-2 focus-visible:outline-offset-2"
+        >
+          <Rss className="size-4" />
+        </a>
+      </div>
     </div>
   );
 }
