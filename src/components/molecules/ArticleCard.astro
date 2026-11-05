@@ -30,7 +30,7 @@ const {
         <CategoryTag>{category}</CategoryTag>
         {status !== 'published' && <StatusBadge status={status} />}
       </div>
-      <h2 class:list={['mt-6 font-medium text-current', featured ? 'text-2xl leading-8 lg:text-[32px] lg:leading-10' : 'text-2xl leading-8']}>
+      <h2 class:list={['mt-6 font-medium tracking-[-0.02em] text-current', featured ? 'text-2xl leading-8 lg:text-[32px] lg:leading-10' : 'text-2xl leading-8']}>
         <a href={href(`articles/${slug}`)} class="after:absolute after:inset-0 hover:underline">{title}</a>
       </h2>
       <p class:list={['mt-4', featured ? 'lg:text-xl lg:leading-[26px]' : 'text-text-tertiary']}>{summary}</p>
