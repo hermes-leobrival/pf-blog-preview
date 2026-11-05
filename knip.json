@@ -1,16 +1,11 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["src/pages/**/*.astro", "astro.config.mjs", "src/content.config.ts"],
+  "entry": ["src/pages/**/*.astro"],
   "project": ["src/**/*.{ts,tsx,astro}"],
   "ignoreDependencies": [
     "tw-animate-css",
-    "shadcn",
     "@fontsource-variable/inter",
     "@fontsource/space-mono",
-    "@astrojs/markdown-remark",
-    "@astrojs/check",
-    "typescript",
-    "@types/mdast",
     "tailwindcss"
   ]
 }
