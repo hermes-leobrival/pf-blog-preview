@@ -1,7 +1,7 @@
 import sources from '@/data/sources.json';
 
 export const SITE_NAME = 'Plugin Factory';
-export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 export const href = (path = '') => `${base}/${path}`.replace(/\/+$/, '/');
 
 export type Source = {
