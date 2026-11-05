@@ -1,0 +1,91 @@
+[
+ {
+  "id": "S01",
+  "title": "Pi - minimal agent harness",
+  "urls": [
+   "https://pi.dev/"
+  ],
+  "author": "Pi / Earendil"
+ },
+ {
+  "id": "S02",
+  "title": "Pi Durable",
+  "urls": [
+   "https://earendil.com/posts/pi-durable/"
+  ],
+  "author": "Earendil Engineering"
+ },
+ {
+  "id": "S03",
+  "title": "Je regrette d'avoir créé des interfaces avec l'IA",
+  "urls": [
+   "https://www.youtube.com/watch?v=CkUtbdamfCk"
+  ],
+  "author": "Eliott Meunier (chaîne YouTube)"
+ },
+ {
+  "id": "S04",
+  "title": "Pourquoi vous n'avez rien compris à ChatGPT",
+  "urls": [
+   "https://www.youtube.com/watch?v=klT8um4GIQI"
+  ],
+  "author": "Léo Duff (chaîne YouTube), sponsorisée Odoo"
+ },
+ {
+  "id": "S05",
+  "title": "Customize Claude Code with mods",
+  "urls": [
+   "https://claude.com/resources/articles/claude-code-mods"
+  ],
+  "author": "Anthropic"
+ },
+ {
+  "id": "S09",
+  "title": "Claude Mods: Flipping the Harness Inside Out",
+  "urls": [
+   "https://latent.space/p/claude-mods/"
+  ],
+  "author": "Latent Space"
+ },
+ {
+  "id": "S11",
+  "title": "Neither Replacement nor Panacea: conversational vs graphical decision support",
+  "urls": [
+   "https://arxiv.org/abs/2605.31287"
+  ],
+  "author": "Figliè et al. (arXiv)"
+ },
+ {
+  "id": "S13",
+  "title": "We Built GUIs for Humans. Now We Need CLIs for AI.",
+  "urls": [
+   "https://blog.ehax.in/posts/guis-for-humans-clis-for-ai/"
+  ],
+  "author": "EHAX (blog)"
+ },
+ {
+  "id": "S14",
+  "title": "GUI vs Command Line in AI Agent Workflows",
+  "urls": [
+   "https://sokko.ai/blog/gui-vs-command-line"
+  ],
+  "author": "Sokko (blog)"
+ },
+ {
+  "id": "S16",
+  "title": "Choose a permission mode (Claude Code)",
+  "urls": [
+   "https://code.claude.com/docs/en/permission-modes.md"
+  ],
+  "author": "Anthropic"
+ },
+ {
+  "id": "S17",
+  "title": "Mods overview + Manage mods for your organization (Claude Code)",
+  "urls": [
+   "https://code.claude.com/docs/en/plugins/mods/overview.md",
+   "https://code.claude.com/docs/en/plugins/mods/admin.md"
+  ],
+  "author": "Anthropic"
+ }
+]
